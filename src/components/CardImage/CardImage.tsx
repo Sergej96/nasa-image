@@ -5,7 +5,7 @@ interface CardImageProps extends AstronomyImg {}
 
 const CardImage: FC<CardImageProps> = ({ title, url, explanation, date }) => {
   return (
-    <div className="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
+    <div className="grid min-h-[140px] w-full place-items-center rounded-lg p-6 lg:overflow-visible">
       <figure className="relative w-full h-96">
         <img
           className="object-content object-center w-full h-full rounded-xl"
