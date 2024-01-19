@@ -12,7 +12,8 @@ const Filter: FC<FilterProps> = () => {
   const [elEndDate, setElEndDate] = useState(formatDate(new Date(), "yyyy-mm-dd"));
   const dispatch = useAppDispatch();
 
-  const updateFilterValue = () => {
+  const updateFilterValue = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     dispatch(
       setFilter({
         startDate: elStartDate,
@@ -29,7 +30,7 @@ const Filter: FC<FilterProps> = () => {
     setElEndDate(event.target.value);
   };
   return (
-    <form className="block">
+    <form className="block" onSubmit={updateFilterValue}>
       <h2 className="text-2xl pb-2 mb-3 border-b border-gray-200">Filter</h2>
       <InputDate
         name="startDate"
@@ -47,7 +48,7 @@ const Filter: FC<FilterProps> = () => {
       >
         End date
       </InputDate>
-      <Button onClick={updateFilterValue}>Filter</Button>
+      <Button type="submit">Filter</Button>
     </form>
   );
 };
