@@ -5,8 +5,8 @@ import { formatDate } from "../../helpers/Date";
 import axios, { AxiosError } from "axios";
 
 const initialState: FilterSliceStore = {
-  startDate: formatDate(new Date(), "yyyy-mm-dd"),
-  endDate: formatDate(new Date(), "yyyy-mm-dd"),
+  startDate: '',
+  endDate: '',
   items: [],
   status: Status.LOADING,
 };
@@ -19,8 +19,8 @@ export const fetchAstronomyImg = createAsyncThunk<AstronomyImg[], DateArgs>(
     const { data } = await axios<AstronomyImg[]>(`${process.env.REACT_APP_NASA_URL}`, {
       params: {
         api_key: process.env.REACT_APP_NASA_API_KEY,
-        start_date: startDate,
-        end_date: endDate,
+        start_date: startDate || formatDate(new Date(), "yyyy-mm-dd"),
+        end_date: endDate || formatDate(new Date(), "yyyy-mm-dd"),
       },
     });
     return data;

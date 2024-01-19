@@ -29,6 +29,12 @@ const Filter: FC<FilterProps> = () => {
   const onChangeEndDate = (event: React.ChangeEvent<HTMLInputElement>) => {
     setElEndDate(event.target.value);
   };
+  
+  const onReset = ()=>{
+    setElStartDate('');
+    setElEndDate('');
+  }
+
   return (
     <form className="block" onSubmit={updateFilterValue}>
       <h2 className="text-2xl pb-2 mb-3 border-b border-gray-200">Filter</h2>
@@ -48,7 +54,8 @@ const Filter: FC<FilterProps> = () => {
       >
         End date
       </InputDate>
-      <Button type="submit">Filter</Button>
+      <Button type="submit">Apply</Button>
+      <Button type="reset" onClick={onReset}>Cancel</Button>
     </form>
   );
 };
